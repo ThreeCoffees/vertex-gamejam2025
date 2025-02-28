@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float speed = 2.0f;
     [SerializeField] GameObject heldItem;
     [SerializeField] float itemReachRadius = 1.0f;
+    [SerializeField] float itemUseRadius = 1.0f;
 
     Rigidbody2D rigidb;
 
@@ -53,6 +54,9 @@ public class PlayerMovement : MonoBehaviour
             if (heldItem == null) {
                 ReachForItem();
             }
+            if (heldItem != null) {
+                TryUseItem();
+            }
         }
     }
 
@@ -82,6 +86,18 @@ public class PlayerMovement : MonoBehaviour
                 heldItem.transform.SetParent(this.transform, true);
 
                 Debug.Log("Picked up " + heldItem.name);
+                break;
+            }
+        }
+    }
+
+    void TryUseItem(){
+        Debug.Log("Using item...");
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, itemUseRadius);
+        foreach (Collider2D collider in colliders){
+            if (collider.gameObject.CompareTag("Device")){
+                
+                Debug.Log("Using " + heldItem.name + " on " + collider.gameObject.name);
                 break;
             }
         }
