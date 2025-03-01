@@ -46,6 +46,7 @@ public class DoorController : MonoBehaviour
     }
 
     void StartOpening(){
+        Debug.Log("Opening door...");
         if(!locked){
             door.GetComponent<BoxCollider2D>().enabled = false;
             opening = true;
