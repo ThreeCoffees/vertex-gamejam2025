@@ -354,7 +354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8002950556789097395, guid: 8666ede3ac92c3b80b08ba3facad494f, type: 3}
       propertyPath: requiredItems.Array.size
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8002950556789097395, guid: 8666ede3ac92c3b80b08ba3facad494f, type: 3}
       propertyPath: requiredItems.Array.data[0]
