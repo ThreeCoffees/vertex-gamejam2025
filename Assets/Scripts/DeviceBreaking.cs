@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class DeviceBreaking : MonoBehaviour
 {
-    public List<DeviceController> devices;
     [SerializeField]float deviceBreakInterval = 5.0f;
 
+    private List<DeviceController> devices;
     private ItemType[] itemTypes;
     private float timeSinceLastBreak = 0.0f;
 
