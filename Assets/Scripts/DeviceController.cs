@@ -49,17 +49,19 @@ public class DeviceController : MonoBehaviour
         }
     }
 
-    public void TryUsingItem(GameObject item){
+    public bool TryUsingItem(GameObject item){
         Debug.Log("Using " + item.name + " on " + this.name);
         ItemType type = item.GetComponent<ItemController>().type;
 
         if(!isBroken()){
-            return;
+            return false;
         }
         if(requiredItems[0] == type){
             requiredItems.RemoveAt(0);
             updateRepairIcons();
+            return true;
         }
+        return false;
     }
 
     public bool isBroken(){
