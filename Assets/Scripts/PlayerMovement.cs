@@ -58,6 +58,11 @@ public class PlayerMovement : MonoBehaviour
                 TryUseItem();
             }
         }
+        if (Input.GetKey(KeyCode.Q)){
+            if (heldItem != null) {
+                DropItem();
+            }
+        }
     }
 
     void RotateToMouse(){
@@ -96,11 +101,20 @@ public class PlayerMovement : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, itemUseRadius);
         foreach (Collider2D collider in colliders){
             if (collider.gameObject.CompareTag("Device")){
-                
+
                 Debug.Log("Using " + heldItem.name + " on " + collider.gameObject.name);
                 break;
             }
         }
+    }
+
+    void DropItem(){
+        Debug.Log("Dropping item...");
+        heldItem.transform.SetParent(null, true);
+        heldItem.GetComponent<Collider2D>().enabled = true;
+        // heldItem.GetComponent<Rigidbody2D>().velocity = rigidb.rotation;
+        
+        heldItem = null;
     }
 }
 
