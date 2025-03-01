@@ -62,12 +62,12 @@ public class DoorController : MonoBehaviour
 
     void LockDoor(){
         locked = true;
-        door.GetComponent<SpriteRenderer>().color = Color.red;
+        GetComponent<Light2D>().variable.color = Color.red;
     }
 
     void UnlockDoor(){
         locked = false;
-        door.GetComponent<SpriteRenderer>().color = Color.green;
+        GetComponent<Light2D>().variable.color = Color.green;
     }
 
     void OnTriggerEnter2D(Collider2D other){
