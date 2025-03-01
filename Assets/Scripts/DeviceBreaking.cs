@@ -46,7 +46,8 @@ public class DeviceBreaking : MonoBehaviour
         ItemType neededTool = itemTypes[UnityEngine.Random.Range(0, itemTypes.Length)];
 
         d.increaseDamage(neededTool);
-        
+
+        //TUTAJ NULL REFERENCE
         audioSource.PlayOneShot(smallDamage);
     }
 }
