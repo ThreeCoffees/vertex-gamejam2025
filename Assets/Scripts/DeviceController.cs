@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DeviceController : MonoBehaviour
 {
-    [SerializeField] List<ItemType> requiredItems;
+    [SerializeField] List<ItemType> requiredItems = new List<ItemType>();
     // Start is called before the first frame update
     void Start()
     {
@@ -30,5 +30,9 @@ public class DeviceController : MonoBehaviour
 
     public bool isBroken(){
         return requiredItems.Count > 0;
+    }
+
+    public void increaseDamage(ItemType item){
+        requiredItems.Add(item);
     }
 }
