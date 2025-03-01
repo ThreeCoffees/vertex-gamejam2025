@@ -5,13 +5,17 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float speed = 2.0f;
-    Rigidbody2D rb;  
+    [SerializeField] GameObject heldItem;
+    [SerializeField] float itemReachRadius = 1.0f;
+    [SerializeField] float itemUseRadius = 1.0f;
+
+    Rigidbody2D rigidb;
 
     private Vector2 moveInput;
     private Vector3 cursorPosition;
 
     void Awake(){
-        rb = GetComponent<Rigidbody2D>();
+        rigidb = GetComponent<Rigidbody2D>();        
     }
     // Start is called before the first frame update
     void Start()
@@ -22,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         HandleInput();
-        rb.velocity = moveInput * speed;
+        rigidb.velocity = moveInput * speed;
         RotateToMouse();
     }
 
@@ -45,11 +49,72 @@ public class PlayerMovement : MonoBehaviour
 
         // Cursor Position
         cursorPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.y - transform.position.y));
+    
+        if (Input.GetKey(KeyCode.E)){
+            if (heldItem == null) {
+                ReachForItem();
+            }
+            if (heldItem != null) {
+                TryUseItem();
+            }
+        }
+        if (Input.GetKey(KeyCode.Q)){
+            if (heldItem != null) {
+                DropItem();
+            }
+        }
     }
 
     void RotateToMouse(){
         float AngleRad = Mathf.Atan2 (cursorPosition.y - transform.position.y, cursorPosition.x - transform.position.x);
         float AngleDeg = (180 / Mathf.PI) * AngleRad;
-        rb.rotation = AngleDeg;
+        rigidb.rotation = AngleDeg;
+
+        // Rotate held item
+        if (heldItem != null){
+            heldItem.transform.position = transform.position;
+            heldItem.transform.rotation = Quaternion.Euler(0, 0, AngleDeg);
+            heldItem.transform.position += heldItem.transform.right * 0.5f;
+        }
+    }
+
+    void ReachForItem(){
+        Debug.Log("Reaching for item...");
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, itemReachRadius);
+        foreach (Collider2D collider in colliders){
+            if (collider.gameObject.CompareTag("Item")){
+                heldItem = collider.gameObject;
+                
+                collider.enabled = false;
+                // collider.offset = new Vector2(0.5f, 0.5f);
+                
+                heldItem.transform.SetParent(this.transform, true);
+
+                Debug.Log("Picked up " + heldItem.name);
+                break;
+            }
+        }
+    }
+
+    void TryUseItem(){
+        Debug.Log("Using item...");
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, itemUseRadius);
+        foreach (Collider2D collider in colliders){
+            if (collider.gameObject.CompareTag("Device")){
+
+                Debug.Log("Using " + heldItem.name + " on " + collider.gameObject.name);
+                break;
+            }
+        }
+    }
+
+    void DropItem(){
+        Debug.Log("Dropping item...");
+        heldItem.transform.SetParent(null, true);
+        heldItem.GetComponent<Collider2D>().enabled = true;
+        // heldItem.GetComponent<Rigidbody2D>().velocity = rigidb.rotation;
+        
+        heldItem = null;
     }
 }
+
