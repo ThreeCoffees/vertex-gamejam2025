@@ -44,3 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8142c781d4c3970b1ae39b1c98ab8ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deviceBreakInterval: 5
+  smallDamage: {fileID: 8300000, guid: 64f95fa5300ac264ba980a25698f2c0c, type: 3}
+  bigDamage: {fileID: 8300000, guid: e37f2594ecaa56e4eb18359c79878a68, type: 3}
+  devices: []

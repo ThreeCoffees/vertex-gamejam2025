@@ -47,6 +47,6 @@ public class DeviceBreaking : MonoBehaviour
 
         d.increaseDamage(neededTool);
         
-        audioSource.PlayOneShot(smallDamage);
+        //audioSource.PlayOneShot(smallDamage);
     }
 }
