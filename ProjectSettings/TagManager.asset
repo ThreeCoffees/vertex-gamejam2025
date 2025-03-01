@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Item
   - Device
+  - Hull
   layers:
   - Default
   - TransparentFX
@@ -42,4 +43,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Hulls
+    uniqueID: 10935119
+    locked: 0
+  - name: Devices
+    uniqueID: 4259591717
+    locked: 0
+  - name: Items
+    uniqueID: 3687898589
+    locked: 0
+  - name: Player
+    uniqueID: 1501620835
     locked: 0
