@@ -1,15 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DeviceController : MonoBehaviour
 {
     [SerializeField] List<ItemType> requiredItems = new List<ItemType>();
     [SerializeField] GameObject repairIcons;
+    RectTransform iconsSize;
 
     [SerializeField] GameObject hammerIcon; 
     [SerializeField] GameObject screwdriverIcon; 
     [SerializeField] GameObject wrenchIcon; 
+
+    void Awake(){
+        iconsSize = repairIcons.GetComponent<RectTransform>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +30,7 @@ public class DeviceController : MonoBehaviour
     }
 
     public void updateRepairIcons(){
+        iconsSize.sizeDelta = new Vector2(32 * requiredItems.Count, 32);
         foreach(Transform child in repairIcons.transform){
             GameObject.Destroy(child.gameObject);
         }
