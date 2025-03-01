@@ -7,7 +7,7 @@ public class DeviceBreaking : MonoBehaviour
 {
     [SerializeField]float deviceBreakInterval = 5.0f;
 
-    private List<DeviceController> devices;
+    public List<DeviceController> devices;
     private ItemType[] itemTypes;
     private float timeSinceLastBreak = 0.0f;
 
