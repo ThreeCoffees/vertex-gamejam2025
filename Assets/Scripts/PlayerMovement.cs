@@ -8,10 +8,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject heldItem;
     [SerializeField] float itemReachRadius = 1.0f;
     [SerializeField] float itemUseRadius = 1.0f;
+    [SerializeField] float itemUseTimer = 0.1f;
 
     Rigidbody2D rigidb;
 
     private Vector2 moveInput;
+    private float lastUsedItem = 0;
+
     private Vector3 cursorPosition;
 
     void Awake(){
@@ -25,9 +28,17 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        HandleTimers();
         HandleInput();
         rigidb.velocity = moveInput * speed;
         RotateToMouse();
+    }
+
+    void HandleTimers(){
+        lastUsedItem = lastUsedItem - Time.deltaTime;
+        if(lastUsedItem < 0) {
+            lastUsedItem = 0;
+        }
     }
 
     void HandleInput(){
@@ -50,15 +61,24 @@ public class PlayerMovement : MonoBehaviour
         // Cursor Position
         cursorPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.y - transform.position.y));
     
-        if (Input.GetKey(KeyCode.E)){
+        // Items
+        itemInput();
+    }
+
+    void itemInput(){
+        if (Input.GetKeyDown(KeyCode.E)){
+            if(lastUsedItem > 0){
+                return;
+            }
             if (heldItem == null) {
                 ReachForItem();
             }
-            if (heldItem != null) {
+            else if (heldItem != null) {
                 TryUseItem();
             }
+            lastUsedItem = itemUseTimer;
         }
-        if (Input.GetKey(KeyCode.Q)){
+        if (Input.GetKeyDown(KeyCode.Q)){
             if (heldItem != null) {
                 DropItem();
             }
@@ -100,9 +120,10 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("Using item...");
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, itemUseRadius);
         foreach (Collider2D collider in colliders){
-            if (collider.gameObject.CompareTag("Device")){
-
-                Debug.Log("Using " + heldItem.name + " on " + collider.gameObject.name);
+            DeviceController device = collider.gameObject.GetComponent<DeviceController>();
+            if (device != null){
+                device.TryUsingItem(heldItem);
+                //Debug.Log("Using " + heldItem.name + " on " + collider.gameObject.name);
                 break;
             }
         }
