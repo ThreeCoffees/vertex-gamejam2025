@@ -10,6 +10,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float itemUseRadius = 1.0f;
     [SerializeField] float itemUseTimer = 0.1f;
 
+    [SerializeField] private AudioClip hammerUse;
+    [SerializeField] private AudioClip screwdriverUse;
+    [SerializeField] private AudioClip wrenchUse;
+ 
     Rigidbody2D rigidb;
 
     private Vector2 moveInput;
@@ -122,8 +126,21 @@ public class PlayerMovement : MonoBehaviour
         foreach (Collider2D collider in colliders){
             DeviceController device = collider.gameObject.GetComponent<DeviceController>();
             if (device != null){
-                device.TryUsingItem(heldItem);
+                bool success = device.TryUsingItem(heldItem);
                 //Debug.Log("Using " + heldItem.name + " on " + collider.gameObject.name);
+                if (success){
+                    switch(heldItem.GetComponent<ItemController>().type){
+                        case ItemType.Hammer:
+                            GetComponent<AudioSource>().PlayOneShot(hammerUse);
+                            break;
+                        case ItemType.Screwdriver:
+                            GetComponent<AudioSource>().PlayOneShot(screwdriverUse);
+                            break;
+                        case ItemType.Wrench:
+                            GetComponent<AudioSource>().PlayOneShot(wrenchUse);
+                            break;
+                    }
+                }
                 break;
             }
         }
