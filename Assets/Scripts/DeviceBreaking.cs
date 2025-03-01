@@ -47,6 +47,7 @@ public class DeviceBreaking : MonoBehaviour
 
         d.increaseDamage(neededTool);
         
+        //TUTAJ NULL REFERENCE
         //audioSource.PlayOneShot(smallDamage);
     }
 }
