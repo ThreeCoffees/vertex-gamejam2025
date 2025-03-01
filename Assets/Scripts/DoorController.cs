@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+ 
 
 public class DoorController : MonoBehaviour
 {
@@ -62,12 +63,12 @@ public class DoorController : MonoBehaviour
 
     void LockDoor(){
         locked = true;
-        GetComponent<Light2D>().variable.color = Color.red;
+        GetComponent<UnityEngine.Rendering.Universal.Light2D>().color = Color.red;
     }
 
     void UnlockDoor(){
         locked = false;
-        GetComponent<Light2D>().variable.color = Color.green;
+        GetComponent<UnityEngine.Rendering.Universal.Light2D>().color = Color.green;
     }
 
     void OnTriggerEnter2D(Collider2D other){
