@@ -30,7 +30,7 @@ public class DeviceController : MonoBehaviour
     }
 
     public void updateRepairIcons(){
-        iconsSize.sizeDelta = new Vector2(32 * requiredItems.Count, 32);
+        iconsSize.sizeDelta = new Vector2(42 + (32 * (requiredItems.Count - 1)), 42);
         foreach(Transform child in repairIcons.transform){
             GameObject.Destroy(child.gameObject);
         }
