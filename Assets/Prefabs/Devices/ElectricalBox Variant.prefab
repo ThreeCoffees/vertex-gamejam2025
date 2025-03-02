@@ -76,6 +76,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4935324451993514900, guid: 8666ede3ac92c3b80b08ba3facad494f, type: 3}
+      propertyPath: m_Radius
+      value: 0.72177076
+      objectReference: {fileID: 0}
+    - target: {fileID: 4935324451993514900, guid: 8666ede3ac92c3b80b08ba3facad494f, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4935324451993514900, guid: 8666ede3ac92c3b80b08ba3facad494f, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.38076735
+      objectReference: {fileID: 0}
     - target: {fileID: 5510462594576467753, guid: 8666ede3ac92c3b80b08ba3facad494f, type: 3}
       propertyPath: m_Name
       value: ElectricalBox Variant
