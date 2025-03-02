@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class GameController : MonoBehaviour
     }
 
     void ResetScene() {
-        GameObject[] devices = GameObject.FindGameObjectsWithTag("Device");
+        /*GameObject[] devices = GameObject.FindGameObjectsWithTag("Device");
         foreach (GameObject device in devices) {
             device.GetComponent<DeviceController>().ResetDevice();
         }
@@ -44,5 +45,7 @@ public class GameController : MonoBehaviour
         }
 
         GetComponent<TimerController>().ResetTimer();
+        */
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
