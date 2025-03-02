@@ -6,8 +6,7 @@ using UnityEngine;
 public class DeviceBreaking : MonoBehaviour
 {
     [SerializeField] float deviceBreakInterval = 5.0f;
-    [SerializeField] private AudioClip smallDamage;
-    [SerializeField] private AudioClip bigDamage;
+
 
     // TUTORIAL
     [SerializeField] DeviceController tutorialDevice;
@@ -20,12 +19,10 @@ public class DeviceBreaking : MonoBehaviour
     private ItemType[] itemTypes;
     private float timeSinceLastBreak = 1.0f;
 
-    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
 
         DeviceController[] deviceControllers = Resources.FindObjectsOfTypeAll<DeviceController>();
         foreach(DeviceController d in deviceControllers){
@@ -49,7 +46,7 @@ public class DeviceBreaking : MonoBehaviour
             return;
         }
 
-        if (tutorialDevice.isBroken() == false) {
+        if (tutorialMode && tutorialDevice.isBroken() == false) {
             tutorialMode = false;
 
             tutorialDevice.tutorialDevice = false;
@@ -90,10 +87,7 @@ public class DeviceBreaking : MonoBehaviour
         d.increaseDamage(neededTool);
         if(d.isDestroyed()){
             devices.RemoveAt(deviceId);
-            audioSource.PlayOneShot(bigDamage);
         }
-
-        audioSource.PlayOneShot(smallDamage);
 
         Debug.Log("Device " + d.name + " is broken. Needs " + neededTool);
     }

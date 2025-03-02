@@ -679,6 +679,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6420711163433470676, guid: 898cb1ba75130f29fbbf79fd6c479883, type: 3}
+      propertyPath: m_Color.b
+      value: 0.23874155
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420711163433470676, guid: 898cb1ba75130f29fbbf79fd6c479883, type: 3}
+      propertyPath: m_Color.g
+      value: 0.23874155
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420711163433470676, guid: 898cb1ba75130f29fbbf79fd6c479883, type: 3}
+      propertyPath: m_Color.r
+      value: 0.3490566
+      objectReference: {fileID: 0}
     - target: {fileID: 7433102213365876517, guid: 898cb1ba75130f29fbbf79fd6c479883, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.66
@@ -1796,7 +1808,7 @@ PrefabInstance:
       objectReference: {fileID: 2109927704}
     - target: {fileID: 846990786519110948, guid: 236bbf96696644e4c8548753cd4de78c, type: 3}
       propertyPath: maxBrokenDevices
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 846990786519110948, guid: 236bbf96696644e4c8548753cd4de78c, type: 3}
       propertyPath: devices.Array.size
