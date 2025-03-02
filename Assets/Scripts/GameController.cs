@@ -7,8 +7,11 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] bool reset;
     [SerializeField] GameObject menu;
+    [SerializeField] GameObject gameoverScreen;
 
     public static GameController instance;
+
+    private bool gameOver = false;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +23,10 @@ public class GameController : MonoBehaviour
         if(instance == null){
             instance = this;
         }
+    }
+
+    public bool isGameOver(){
+        return gameOver;
     }
 
     // Update is called once per frame
@@ -40,7 +47,8 @@ public class GameController : MonoBehaviour
 
     public void GameOver(){
         Debug.Log("Game Over");
-        menu.SetActive(true);
+        gameOver = true;
+        gameoverScreen.SetActive(true);
     }
 
     public void ExitGame(){
@@ -50,7 +58,7 @@ public class GameController : MonoBehaviour
         Application.Quit();
     }
 
-    void ResetScene() {
+    public void ResetScene() {
         /*GameObject[] devices = GameObject.FindGameObjectsWithTag("Device");
         foreach (GameObject device in devices) {
             device.GetComponent<DeviceController>().ResetDevice();
