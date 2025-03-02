@@ -21,6 +21,14 @@ public class DeviceBreaking : MonoBehaviour
     private ItemType[] itemTypes;
     private float timeSinceLastBreak = 1.0f;
 
+    void Awake(){
+        if(!PlayerPrefs.HasKey("TutorialCompleted")){
+            PlayerPrefs.SetInt("TutorialCompleted", 0);
+            tutorialMode = true;
+        } else {
+            tutorialMode = (PlayerPrefs.GetInt("TutorialCompleted") == 0);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +61,7 @@ public class DeviceBreaking : MonoBehaviour
 
         if (tutorialMode && tutorialDevice.isBroken() == false) {
             tutorialMode = false;
+            PlayerPrefs.SetInt("TutorialCompleted", 1);
 
             tutorialDevice.tutorialDevice = false;
 
@@ -99,5 +108,6 @@ public class DeviceBreaking : MonoBehaviour
 
     public void ResetTutorial(){
         tutorialMode = true;
+        PlayerPrefs.SetInt("TutorialCompleted", 0);
     } 
 }

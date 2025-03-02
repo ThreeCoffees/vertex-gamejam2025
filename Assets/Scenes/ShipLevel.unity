@@ -4559,6 +4559,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1733641885}
     - target: {fileID: 8768891194757766909, guid: 9d4fc7b750efab1b29486b7bf7a6a188, type: 3}
+      propertyPath: besttimeText
+      value: 
+      objectReference: {fileID: 2143298429}
+    - target: {fileID: 8768891194757766909, guid: 9d4fc7b750efab1b29486b7bf7a6a188, type: 3}
       propertyPath: gameoverScreen
       value: 
       objectReference: {fileID: 1764046415726744138}
@@ -17074,6 +17078,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1155437844947651849, guid: 4ee48adf55e335aca9c6dca239e4a5d7, type: 3}
+      propertyPath: m_text
+      value: ONE ARM LEFT
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155437844947651849, guid: 4ee48adf55e335aca9c6dca239e4a5d7, type: 3}
+      propertyPath: m_fontSize
+      value: 135.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155437844947651849, guid: 4ee48adf55e335aca9c6dca239e4a5d7, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 135.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155437844947651849, guid: 4ee48adf55e335aca9c6dca239e4a5d7, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1205428831824302758, guid: 4ee48adf55e335aca9c6dca239e4a5d7, type: 3}
       propertyPath: m_fontColor.b
       value: 0.8584906
@@ -17102,6 +17122,30 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 997642768}
+    - target: {fileID: 6902891157683740343, guid: 4ee48adf55e335aca9c6dca239e4a5d7, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6902891157683740343, guid: 4ee48adf55e335aca9c6dca239e4a5d7, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6902891157683740343, guid: 4ee48adf55e335aca9c6dca239e4a5d7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 616
+      objectReference: {fileID: 0}
+    - target: {fileID: 6902891157683740343, guid: 4ee48adf55e335aca9c6dca239e4a5d7, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 39.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 6902891157683740343, guid: 4ee48adf55e335aca9c6dca239e4a5d7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 307
+      objectReference: {fileID: 0}
+    - target: {fileID: 6902891157683740343, guid: 4ee48adf55e335aca9c6dca239e4a5d7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 162.05
+      objectReference: {fileID: 0}
     - target: {fileID: 8657923139975360404, guid: 4ee48adf55e335aca9c6dca239e4a5d7, type: 3}
       propertyPath: player
       value: 
@@ -17177,6 +17221,11 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3072070737264578692, guid: 1663274ff775caf498fcdff6c6e88523, type: 3}
   m_PrefabInstance: {fileID: 1277051157}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2143298429 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 65659824136601542, guid: 5689e8c4c221b0bac987d1109d6b7f71, type: 3}
+  m_PrefabInstance: {fileID: 4148232673016801653}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &509446508539033725
 PrefabInstance:
