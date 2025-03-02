@@ -111,9 +111,9 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &894876549303014838
 CircleCollider2D:
@@ -162,7 +162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ced5520a99c318fea390b7fa3d101fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 4
+  turnSpeed: 90
   heldItem: {fileID: 0}
   itemReachRadius: 1
   itemUseRadius: 1

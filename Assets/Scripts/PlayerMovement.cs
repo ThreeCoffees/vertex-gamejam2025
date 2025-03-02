@@ -92,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
     void RotateToMouse(){
         float AngleRad = Mathf.Atan2 (cursorPosition.y - transform.position.y, cursorPosition.x - transform.position.x);
         float AngleDeg = (180 / Mathf.PI) * AngleRad;
-        rigidb.rotation = AngleDeg;
+        transform.rotation = Quaternion.Euler(0,0,AngleDeg);
 
         // Rotate held item
         if (heldItem != null){
@@ -149,6 +149,9 @@ public class PlayerMovement : MonoBehaviour
     void DropItem(){
         Debug.Log("Dropping item...");
         heldItem.transform.SetParent(null, true);
+        Rigidbody2D heldItemRB = heldItem.GetComponent<Rigidbody2D>();
+        heldItemRB.velocity = Vector2.zero;
+        heldItemRB.angularVelocity = 0.0f;
         heldItem.GetComponent<Collider2D>().enabled = true;
         // heldItem.GetComponent<Rigidbody2D>().velocity = rigidb.rotation;
         
