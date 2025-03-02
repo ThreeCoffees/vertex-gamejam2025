@@ -33,6 +33,10 @@ public class DeviceBreaking : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(devices.Count == 0){
+            Debug.Log("GameOver");
+            return;
+        }
         timeSinceLastBreak -= Time.deltaTime;
         if(timeSinceLastBreak <= 0){
             BreakMachine();
@@ -46,8 +50,10 @@ public class DeviceBreaking : MonoBehaviour
         ItemType neededTool = itemTypes[UnityEngine.Random.Range(0, itemTypes.Length)];
 
         d.increaseDamage(neededTool);
+        if(d.isDestroyed()){
+            devices.RemoveAt(deviceId);
+        }
 
-        //TUTAJ NULL REFERENCE
         audioSource.PlayOneShot(smallDamage);
     }
 }
