@@ -4562,6 +4562,7 @@ PrefabInstance:
       propertyPath: besttimeText
       value: 
       objectReference: {fileID: 2143298429}
+
     - target: {fileID: 8768891194757766909, guid: 9d4fc7b750efab1b29486b7bf7a6a188, type: 3}
       propertyPath: gameoverScreen
       value: 
@@ -5342,6 +5343,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1425828846996690460, guid: 1663274ff775caf498fcdff6c6e88523, type: 3}
   m_PrefabInstance: {fileID: 1277051157}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1277327281 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 65659824136601542, guid: 5689e8c4c221b0bac987d1109d6b7f71, type: 3}
+  m_PrefabInstance: {fileID: 4148232673016801653}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1294407109
 PrefabInstance:
