@@ -25,4 +25,8 @@ public class TimerController : MonoBehaviour
 
         timer.GetComponent<TMP_Text>().text = minutes.ToString("00") + ":" + seconds.ToString("00");
     }
+
+    public void ResetTimer() {
+        time = 0.0;
+    }
 }

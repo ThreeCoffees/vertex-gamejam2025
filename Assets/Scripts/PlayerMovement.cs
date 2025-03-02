@@ -157,5 +157,12 @@ public class PlayerMovement : MonoBehaviour
         
         heldItem = null;
     }
+
+    public void ResetPlayer(){
+        heldItem = null;
+        Transform spawn = transform.parent;
+        transform.position = spawn.position;
+        transform.rotation = spawn.rotation;
+    }
 }
 
