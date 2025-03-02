@@ -149,6 +149,9 @@ public class PlayerMovement : MonoBehaviour
     void DropItem(){
         Debug.Log("Dropping item...");
         heldItem.transform.SetParent(null, true);
+        Rigidbody2D heldItemRB = heldItem.GetComponent<Rigidbody2D>();
+        heldItemRB.velocity = Vector2.zero;
+        heldItemRB.angularVelocity = 0.0f;
         heldItem.GetComponent<Collider2D>().enabled = true;
         // heldItem.GetComponent<Rigidbody2D>().velocity = rigidb.rotation;
         
