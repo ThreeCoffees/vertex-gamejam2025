@@ -23,7 +23,18 @@ public class TimerController : MonoBehaviour
         int minutes = (int)time / 60;
         int seconds = (int)time % 60;
 
-        timer.GetComponent<TMP_Text>().text = minutes.ToString("00") + ":" + seconds.ToString("00");
+        //timer.GetComponent<TMP_Text>().text = minutes.ToString("00") + ":" + seconds.ToString("00");
+        timer.GetComponent<TMP_Text>().text = timerToText((float)time);
+    }
+
+    public static string timerToText(float timer){
+        string text = string.Format("{0:00}:{1:00}.{2:00}", 
+                Mathf.Floor(timer / 60), Mathf.Floor(timer % 60), Mathf.Floor((timer * 100) % 100));
+        return text;
+    }
+
+    public double getTime() {
+        return time;
     }
 
     public void ResetTimer() {
