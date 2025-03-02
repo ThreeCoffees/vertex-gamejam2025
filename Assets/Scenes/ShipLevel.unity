@@ -17622,6 +17622,10 @@ PrefabInstance:
       value: OxygenGenerator
       objectReference: {fileID: 0}
     - target: {fileID: 3216159543394375346, guid: fe0f090617fb2e86aaccd0230c22a91d, type: 3}
+      propertyPath: tutorialDevice
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3216159543394375346, guid: fe0f090617fb2e86aaccd0230c22a91d, type: 3}
       propertyPath: requiredItems.Array.size
       value: 1
       objectReference: {fileID: 0}
