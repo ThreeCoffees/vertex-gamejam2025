@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+
 
 public class GameController : MonoBehaviour
 {
     [SerializeField] bool reset;
     [SerializeField] GameObject menu;
     [SerializeField] GameObject gameoverScreen;
+    [SerializeField] GameObject besttimeText;
 
     public static GameController instance;
 
@@ -22,6 +25,9 @@ public class GameController : MonoBehaviour
     void Awake(){
         if(instance == null){
             instance = this;
+        }
+        if(!PlayerPrefs.HasKey("BestTime")){
+            PlayerPrefs.SetFloat("BestTime", 0.0f);
         }
     }
 
@@ -48,6 +54,15 @@ public class GameController : MonoBehaviour
     public void GameOver(){
         Debug.Log("Game Over");
         gameOver = true;
+
+        float bestTime = PlayerPrefs.GetFloat("BestTime");
+        float timer = (float)GetComponent<TimerController>().getTime();
+        if(bestTime < timer){
+            bestTime = timer;
+            PlayerPrefs.SetFloat("BestTime", bestTime);
+        }
+
+        besttimeText.GetComponent<TMP_Text>().text = "Best time: " + TimerController.timerToText(bestTime);
         gameoverScreen.SetActive(true);
     }
 
