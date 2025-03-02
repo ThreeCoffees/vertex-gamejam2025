@@ -12,6 +12,9 @@ public class DeviceController : MonoBehaviour
     [SerializeField] GameObject hammerIcon; 
     [SerializeField] GameObject screwdriverIcon; 
     [SerializeField] GameObject wrenchIcon; 
+    [SerializeField] GameObject sparks;
+
+    bool destroyed = false;
 
     void Awake(){
         iconsSize = repairIcons.GetComponent<RectTransform>();
@@ -30,11 +33,19 @@ public class DeviceController : MonoBehaviour
     }
 
     public void updateRepairIcons(){
+        if(destroyed){
+            requiredItems.Clear();
+            sparks.SetActive(false);
+            GetComponent<SpriteRenderer>().color = Color.grey;
+        }
+
         if(requiredItems.Count == 0){
             iconsSize.sizeDelta = new Vector2(0,0);
         }else{
             iconsSize.sizeDelta = new Vector2(42 + (32 * (requiredItems.Count - 1)), 42);
         }
+
+
         foreach(Transform child in repairIcons.transform){
             GameObject.Destroy(child.gameObject);
         }
@@ -51,13 +62,19 @@ public class DeviceController : MonoBehaviour
                     break;
             }
         }
+
+        if(isBroken() && !isDestroyed()){
+            sparks.SetActive(true);
+        }else{
+            sparks.SetActive(false);
+        }
     }
 
     public bool TryUsingItem(GameObject item){
         Debug.Log("Using " + item.name + " on " + this.name);
         ItemType type = item.GetComponent<ItemController>().type;
 
-        if(!isBroken()){
+        if(!isBroken()|| destroyed){
             return false;
         }
         if(requiredItems[0] == type){
@@ -73,11 +90,14 @@ public class DeviceController : MonoBehaviour
     }
 
     public bool isDestroyed(){
-        return requiredItems.Count >= 5;
+        return destroyed;
     }
 
     public void increaseDamage(ItemType item){
         requiredItems.Add(item);
+        if(requiredItems.Count >= 5){
+            destroyed = true;
+        }
         updateRepairIcons();
     }
 
