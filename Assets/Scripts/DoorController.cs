@@ -61,13 +61,13 @@ public class DoorController : MonoBehaviour
         closing = true;
     }
 
-    void LockDoor(){
+    public void LockDoor(){
         locked = true;
         GetComponent<UnityEngine.Rendering.Universal.Light2D>().color = Color.red;
         door.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.red;
     }
 
-    void UnlockDoor(){
+    public void UnlockDoor(){
         locked = false;
         GetComponent<UnityEngine.Rendering.Universal.Light2D>().color = Color.green;
         door.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.green;

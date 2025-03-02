@@ -80,4 +80,9 @@ public class DeviceController : MonoBehaviour
         requiredItems.Add(item);
         updateRepairIcons();
     }
+
+    public void ResetDevice() {
+        requiredItems.Clear();
+        updateRepairIcons();
+    }
 }
