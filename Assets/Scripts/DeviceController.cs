@@ -13,8 +13,13 @@ public class DeviceController : MonoBehaviour
     [SerializeField] GameObject screwdriverIcon; 
     [SerializeField] GameObject wrenchIcon; 
     [SerializeField] GameObject sparks;
-
+    [SerializeField] public bool tutorialDevice;
     bool destroyed = false;
+
+    
+    [SerializeField] private AudioClip smallDamage;
+    [SerializeField] private AudioClip bigDamage;
+    private AudioSource audioSource;
 
     void Awake(){
         iconsSize = repairIcons.GetComponent<RectTransform>();
@@ -23,6 +28,7 @@ public class DeviceController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         updateRepairIcons();
     }
 
@@ -94,10 +100,21 @@ public class DeviceController : MonoBehaviour
     }
 
     public void increaseDamage(ItemType item){
-        requiredItems.Add(item);
-        if(requiredItems.Count >= 5){
-            destroyed = true;
+        
+        if(requiredItems.Count >= 4) {
+            if (tutorialDevice) { 
+                return; 
+            } 
+            else { 
+                destroyed = true; 
+                audioSource.PlayOneShot(bigDamage);
+            }
+            return;
         }
+
+        requiredItems.Add(item);
+        audioSource.PlayOneShot(smallDamage);    
+        
         updateRepairIcons();
     }
 

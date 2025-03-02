@@ -5,27 +5,35 @@ using UnityEngine;
 
 public class DeviceBreaking : MonoBehaviour
 {
-    [SerializeField]float deviceBreakInterval = 5.0f;
-    [SerializeField] private AudioClip smallDamage;
-    [SerializeField] private AudioClip bigDamage;
+    [SerializeField] float deviceBreakInterval = 5.0f;
+    [SerializeField] float deviceBreakIntervalTutorial = 10.0f;
+
+    // TUTORIAL
+    [SerializeField] DeviceController tutorialDevice;
+    [SerializeField] bool tutorialMode;
+    [SerializeField] GameObject timerText;
+    [SerializeField] TimerController timerController;
 
     public List<DeviceController> devices;
+    private int tutorialDeviceId;
     [SerializeField] private int maxBrokenDevices;
     private int deviceCount;
     private ItemType[] itemTypes;
     private float timeSinceLastBreak = 1.0f;
 
-    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        if (tutorialMode) {
+            timerText.SetActive(false);
+        }
 
         DeviceController[] deviceControllers = Resources.FindObjectsOfTypeAll<DeviceController>();
         foreach(DeviceController d in deviceControllers){
             if(d.gameObject.activeInHierarchy){
                 devices.Add(d);
+                if (d == tutorialDevice) {tutorialDeviceId = devices.Count - 1;}
             }
         }
         deviceCount = devices.Count;
@@ -36,23 +44,48 @@ public class DeviceBreaking : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(devices.Count == 0){
-            return;
-        }
+        if(devices.Count == 0){ return; }
         if(devices.Count <= deviceCount - maxBrokenDevices){
             Debug.Log("GameOver");
             GameController.instance.GameOver();
             return;
         }
+
+        if (tutorialMode && tutorialDevice.isBroken() == false) {
+            tutorialMode = false;
+
+            tutorialDevice.tutorialDevice = false;
+
+            timerText.SetActive(true);
+            timerController.ResetTimer();
+
+            Debug.Log("Tutorial completed");
+        }
+
+        if (tutorialMode){
+            TutorialBreak();
+        } else {
+            InGameBreak();
+        }
+    }
+
+    void TutorialBreak() {
         timeSinceLastBreak -= Time.deltaTime;
         if(timeSinceLastBreak <= 0){
-            BreakMachine();
+            BreakMachine(tutorialDeviceId);
+            timeSinceLastBreak = deviceBreakIntervalTutorial;
+        }
+    }
+
+    void InGameBreak() {
+        timeSinceLastBreak -= Time.deltaTime;
+        if(timeSinceLastBreak <= 0){
+            BreakMachine(UnityEngine.Random.Range(0, devices.Count));
             timeSinceLastBreak = deviceBreakInterval;
         }
     }
 
-    void BreakMachine(){
-        int deviceId = UnityEngine.Random.Range(0, devices.Count);
+    void BreakMachine(int deviceId){
         DeviceController d = devices[deviceId];
         ItemType neededTool = itemTypes[UnityEngine.Random.Range(0, itemTypes.Length)];
 
@@ -61,6 +94,10 @@ public class DeviceBreaking : MonoBehaviour
             devices.RemoveAt(deviceId);
         }
 
-        audioSource.PlayOneShot(smallDamage);
+        Debug.Log("Device " + d.name + " is broken. Needs " + neededTool);
     }
+
+    public void ResetTutorial(){
+        tutorialMode = true;
+    } 
 }
