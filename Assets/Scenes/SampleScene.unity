@@ -1590,6 +1590,10 @@ PrefabInstance:
       value: Left engine
       objectReference: {fileID: 0}
     - target: {fileID: 2504238453442082603, guid: 898cb1ba75130f29fbbf79fd6c479883, type: 3}
+      propertyPath: tutorialDevice
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2504238453442082603, guid: 898cb1ba75130f29fbbf79fd6c479883, type: 3}
       propertyPath: requiredItems.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1792,7 +1796,7 @@ PrefabInstance:
       objectReference: {fileID: 2109927704}
     - target: {fileID: 846990786519110948, guid: 236bbf96696644e4c8548753cd4de78c, type: 3}
       propertyPath: maxBrokenDevices
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 846990786519110948, guid: 236bbf96696644e4c8548753cd4de78c, type: 3}
       propertyPath: devices.Array.size

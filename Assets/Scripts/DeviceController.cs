@@ -13,7 +13,7 @@ public class DeviceController : MonoBehaviour
     [SerializeField] GameObject screwdriverIcon; 
     [SerializeField] GameObject wrenchIcon; 
     [SerializeField] GameObject sparks;
-    [SerializeField] bool tutorialDevice;
+    [SerializeField] public bool tutorialDevice;
     bool destroyed = false;
 
     void Awake(){
@@ -95,7 +95,7 @@ public class DeviceController : MonoBehaviour
 
     public void increaseDamage(ItemType item){
         if(requiredItems.Count >= 4) {
-            if (tutorialDevice) { /* don't destroy */ } 
+            if (tutorialDevice) { return; } 
             else { destroyed = true; }
             return;
         }

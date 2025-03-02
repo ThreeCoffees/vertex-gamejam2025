@@ -12,7 +12,6 @@ public class DeviceBreaking : MonoBehaviour
     // TUTORIAL
     [SerializeField] DeviceController tutorialDevice;
     [SerializeField] bool tutorialMode;
-    [SerializeField] bool tutorialCompleted;
 
     public List<DeviceController> devices;
     private int tutorialDeviceId;
@@ -51,11 +50,17 @@ public class DeviceBreaking : MonoBehaviour
         }
 
         if (tutorialDevice.isBroken() == false) {
-            tutorialCompleted = true;
             tutorialMode = false;
+
+            tutorialDevice.tutorialDevice = false;
+
+            TimerController timer = FindObjectOfType<TimerController>();
+            timer.ResetTimer();
+
+            Debug.Log("Tutorial completed");
         }
 
-        if (tutorialMode && !tutorialCompleted){
+        if (tutorialMode){
             TutorialBreak();
         } else {
             InGameBreak();
@@ -85,6 +90,7 @@ public class DeviceBreaking : MonoBehaviour
         d.increaseDamage(neededTool);
         if(d.isDestroyed()){
             devices.RemoveAt(deviceId);
+            audioSource.PlayOneShot(bigDamage);
         }
 
         audioSource.PlayOneShot(smallDamage);
@@ -94,6 +100,5 @@ public class DeviceBreaking : MonoBehaviour
 
     public void ResetTutorial(){
         tutorialMode = true;
-        tutorialCompleted = false;
     } 
 }
