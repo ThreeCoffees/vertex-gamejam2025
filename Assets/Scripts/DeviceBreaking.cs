@@ -10,8 +10,10 @@ public class DeviceBreaking : MonoBehaviour
     [SerializeField] private AudioClip bigDamage;
 
     public List<DeviceController> devices;
+    [SerializeField] private int maxBrokenDevices;
+    private int deviceCount;
     private ItemType[] itemTypes;
-    private float timeSinceLastBreak = 0.0f;
+    private float timeSinceLastBreak = 1.0f;
 
     private AudioSource audioSource;
 
@@ -26,6 +28,7 @@ public class DeviceBreaking : MonoBehaviour
                 devices.Add(d);
             }
         }
+        deviceCount = devices.Count;
 
         itemTypes = (ItemType[])Enum.GetValues(typeof(ItemType));
     }
@@ -34,7 +37,11 @@ public class DeviceBreaking : MonoBehaviour
     void Update()
     {
         if(devices.Count == 0){
+            return;
+        }
+        if(devices.Count <= deviceCount - maxBrokenDevices){
             Debug.Log("GameOver");
+            GameController.instance.GameOver();
             return;
         }
         timeSinceLastBreak -= Time.deltaTime;

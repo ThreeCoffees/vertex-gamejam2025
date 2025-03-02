@@ -1,15 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
     [SerializeField] bool reset;
+    [SerializeField] GameObject menu;
+
+    public static GameController instance;
 
     // Start is called before the first frame update
     void Start()
     {
         
+    }
+
+    void Awake(){
+        if(instance == null){
+            instance = this;
+        }
     }
 
     // Update is called once per frame
@@ -22,10 +32,26 @@ public class GameController : MonoBehaviour
             ResetScene();
             reset = false;
         }
+
+        if(Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)){
+            menu.SetActive(true);
+        }
+    }
+
+    public void GameOver(){
+        Debug.Log("Game Over");
+        menu.SetActive(true);
+    }
+
+    public void ExitGame(){
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+        Application.Quit();
     }
 
     void ResetScene() {
-        GameObject[] devices = GameObject.FindGameObjectsWithTag("Device");
+        /*GameObject[] devices = GameObject.FindGameObjectsWithTag("Device");
         foreach (GameObject device in devices) {
             device.GetComponent<DeviceController>().ResetDevice();
         }
@@ -44,5 +70,7 @@ public class GameController : MonoBehaviour
         }
 
         GetComponent<TimerController>().ResetTimer();
+        */
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
