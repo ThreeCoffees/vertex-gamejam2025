@@ -13581,6 +13581,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ElectricalBoxLeft
       objectReference: {fileID: 0}
+    - target: {fileID: 2869166675643640866, guid: 27344676475ab00d6aefdf7997628b40, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 4795590501947869667, guid: 27344676475ab00d6aefdf7997628b40, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.75
