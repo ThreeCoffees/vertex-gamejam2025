@@ -6,6 +6,7 @@ public class RoomController : MonoBehaviour
 {
     [SerializeField]List<GameObject> devices;
     [SerializeField]List<GameObject> doors;
+    [SerializeField]List<GameObject> lights;
     private Collider2D roomCollider;
 
     bool isDestroyed = false;
@@ -40,6 +41,9 @@ public class RoomController : MonoBehaviour
         isDestroyed = true;
         foreach(GameObject o in doors){
             o.GetComponent<DoorController>().locked = true;
+        }
+        foreach(GameObject o in lights){
+            o.GetComponent<UnityEngine.Rendering.Universal.Light2D>().color = Color.red;
         }
     }
 }
