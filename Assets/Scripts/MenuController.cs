@@ -28,10 +28,10 @@ public class MenuController : MonoBehaviour
 
     void HandleInput() {
         if (Input.GetKeyDown(KeyCode.W)) {
-            selectedId = (selectedId - 1) % selections.Length;
+            selectedId = Mathf.Abs(selectedId - 1) % selections.Length;
         }
         if (Input.GetKeyDown(KeyCode.S)) {
-            selectedId = (selectedId + 1) % selections.Length;
+            selectedId = Mathf.Abs(selectedId + 1) % selections.Length;
         }
         if (Input.GetKeyDown(KeyCode.Return)) {
             if (selectedId == 0) {
