@@ -272,7 +272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2913615525869675144, guid: 70731006a3a47b042b104e22175cdd6d, type: 3}
       propertyPath: m_Interpolate
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4599853497237617227, guid: 70731006a3a47b042b104e22175cdd6d, type: 3}
       propertyPath: m_Name
@@ -333,7 +333,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1056350545913806143, guid: 820b92fe5e789013da29cf845ded0241, type: 3}
       propertyPath: m_DynamicOccludee
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1056350545913806143, guid: 820b92fe5e789013da29cf845ded0241, type: 3}
       propertyPath: m_LocalAABB.m_Center.x
@@ -1795,7 +1795,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1056350545913806143, guid: 820b92fe5e789013da29cf845ded0241, type: 3}
       propertyPath: m_DynamicOccludee
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1056350545913806143, guid: 820b92fe5e789013da29cf845ded0241, type: 3}
       propertyPath: m_LocalAABB.m_Center.x
@@ -3307,7 +3307,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1056350545913806143, guid: 820b92fe5e789013da29cf845ded0241, type: 3}
       propertyPath: m_DynamicOccludee
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1056350545913806143, guid: 820b92fe5e789013da29cf845ded0241, type: 3}
       propertyPath: m_LocalAABB.m_Center.x
@@ -3432,7 +3432,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1056350545913806143, guid: 820b92fe5e789013da29cf845ded0241, type: 3}
       propertyPath: m_DynamicOccludee
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1056350545913806143, guid: 820b92fe5e789013da29cf845ded0241, type: 3}
       propertyPath: m_LocalAABB.m_Center.x
@@ -7263,7 +7263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1952981260614459947, guid: d81bb324f090356eca065d108eb9f067, type: 3}
       propertyPath: m_DynamicOccludee
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1952981260614459947, guid: d81bb324f090356eca065d108eb9f067, type: 3}
       propertyPath: m_LocalAABB.m_Center.x
@@ -9101,7 +9101,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1952981260614459947, guid: d81bb324f090356eca065d108eb9f067, type: 3}
       propertyPath: m_DynamicOccludee
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1952981260614459947, guid: d81bb324f090356eca065d108eb9f067, type: 3}
       propertyPath: m_LocalAABB.m_Center.x
@@ -11694,7 +11694,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1056350545913806143, guid: 820b92fe5e789013da29cf845ded0241, type: 3}
       propertyPath: m_DynamicOccludee
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1056350545913806143, guid: 820b92fe5e789013da29cf845ded0241, type: 3}
       propertyPath: m_LocalAABB.m_Center.x
@@ -11823,7 +11823,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1952981260614459947, guid: d81bb324f090356eca065d108eb9f067, type: 3}
       propertyPath: m_DynamicOccludee
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1952981260614459947, guid: d81bb324f090356eca065d108eb9f067, type: 3}
       propertyPath: m_LocalAABB.m_Center.x

@@ -92,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
     void RotateToMouse(){
         float AngleRad = Mathf.Atan2 (cursorPosition.y - transform.position.y, cursorPosition.x - transform.position.x);
         float AngleDeg = (180 / Mathf.PI) * AngleRad;
-        rigidb.rotation = AngleDeg;
+        transform.rotation = Quaternion.Euler(0,0,AngleDeg);
 
         // Rotate held item
         if (heldItem != null){

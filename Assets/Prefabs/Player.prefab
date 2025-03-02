@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+  turnSpeed: 90
   heldItem: {fileID: 0}
   itemReachRadius: 1
   itemUseRadius: 1
