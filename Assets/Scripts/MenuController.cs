@@ -45,8 +45,13 @@ public class MenuController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Return)) {
             if (selectedId == 0) {
-                player.GetComponent<PlayerMovement>().enabled = true;
-                this.gameObject.SetActive(false);
+                if(GameController.instance.isGameOver()){
+                    GameController.instance.ResetScene();
+                }
+                else {
+                    player.GetComponent<PlayerMovement>().enabled = true;
+                    this.gameObject.SetActive(false);
+                }
             }
             if (selectedId == 1) {
                 GameController.instance.ExitGame();
