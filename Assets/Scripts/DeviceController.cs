@@ -72,6 +72,10 @@ public class DeviceController : MonoBehaviour
         return requiredItems.Count > 0;
     }
 
+    public bool isDestroyed(){
+        return requiredItems.Count >= 5;
+    }
+
     public void increaseDamage(ItemType item){
         requiredItems.Add(item);
         updateRepairIcons();
