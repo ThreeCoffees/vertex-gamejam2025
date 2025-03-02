@@ -38,6 +38,11 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void GameOver(){
+        Debug.Log("Game Over");
+        menu.SetActive(true);
+    }
+
     public void ExitGame(){
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;

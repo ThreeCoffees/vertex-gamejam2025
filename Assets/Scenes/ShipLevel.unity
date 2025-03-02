@@ -1171,6 +1171,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 846990786519110948, guid: 236bbf96696644e4c8548753cd4de78c, type: 3}
+      propertyPath: maxBrokenDevices
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 846990786519110948, guid: 236bbf96696644e4c8548753cd4de78c, type: 3}
+      propertyPath: deviceBreakInterval
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2252321824016612672, guid: 236bbf96696644e4c8548753cd4de78c, type: 3}
       propertyPath: m_Name
       value: DeviceBreaking
