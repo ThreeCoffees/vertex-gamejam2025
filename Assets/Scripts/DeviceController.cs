@@ -12,6 +12,7 @@ public class DeviceController : MonoBehaviour
     [SerializeField] GameObject hammerIcon; 
     [SerializeField] GameObject screwdriverIcon; 
     [SerializeField] GameObject wrenchIcon; 
+    [SerializeField] GameObject sparks;
 
     void Awake(){
         iconsSize = repairIcons.GetComponent<RectTransform>();
@@ -50,6 +51,12 @@ public class DeviceController : MonoBehaviour
                     Instantiate(wrenchIcon, repairIcons.transform);
                     break;
             }
+        }
+
+        if(isBroken()){
+            sparks.SetActive(true);
+        }else{
+            sparks.SetActive(false);
         }
     }
 
