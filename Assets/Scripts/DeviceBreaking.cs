@@ -6,11 +6,13 @@ using UnityEngine;
 public class DeviceBreaking : MonoBehaviour
 {
     [SerializeField] float deviceBreakInterval = 5.0f;
-
+    [SerializeField] float deviceBreakIntervalTutorial = 10.0f;
 
     // TUTORIAL
     [SerializeField] DeviceController tutorialDevice;
     [SerializeField] bool tutorialMode;
+    [SerializeField] GameObject timerText;
+    [SerializeField] TimerController timerController;
 
     public List<DeviceController> devices;
     private int tutorialDeviceId;
@@ -23,6 +25,9 @@ public class DeviceBreaking : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (tutorialMode) {
+            timerText.SetActive(false);
+        }
 
         DeviceController[] deviceControllers = Resources.FindObjectsOfTypeAll<DeviceController>();
         foreach(DeviceController d in deviceControllers){
@@ -51,8 +56,8 @@ public class DeviceBreaking : MonoBehaviour
 
             tutorialDevice.tutorialDevice = false;
 
-            TimerController timer = FindObjectOfType<TimerController>();
-            timer.ResetTimer();
+            timerText.SetActive(true);
+            timerController.ResetTimer();
 
             Debug.Log("Tutorial completed");
         }
@@ -68,7 +73,7 @@ public class DeviceBreaking : MonoBehaviour
         timeSinceLastBreak -= Time.deltaTime;
         if(timeSinceLastBreak <= 0){
             BreakMachine(tutorialDeviceId);
-            timeSinceLastBreak = deviceBreakInterval;
+            timeSinceLastBreak = deviceBreakIntervalTutorial;
         }
     }
 
