@@ -6,11 +6,20 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     [SerializeField] bool reset;
+    [SerializeField] GameObject menu;
+
+    public static GameController instance;
 
     // Start is called before the first frame update
     void Start()
     {
         
+    }
+
+    void Awake(){
+        if(instance == null){
+            instance = this;
+        }
     }
 
     // Update is called once per frame
@@ -23,6 +32,17 @@ public class GameController : MonoBehaviour
             ResetScene();
             reset = false;
         }
+
+        if(Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)){
+            menu.SetActive(true);
+        }
+    }
+
+    public void ExitGame(){
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+        Application.Quit();
     }
 
     void ResetScene() {

@@ -26,6 +26,16 @@ public class MenuController : MonoBehaviour
         HandleInput();
     }
 
+    void OnEnable() {
+        player.GetComponent<PlayerMovement>().enabled = false;
+        Time.timeScale = 0;
+    }
+
+    void OnDisable() {
+        player.GetComponent<PlayerMovement>().enabled = true;
+        Time.timeScale = 1;
+    }
+
     void HandleInput() {
         if (Input.GetKeyDown(KeyCode.W)) {
             selectedId = Mathf.Abs(selectedId - 1) % selections.Length;
@@ -39,7 +49,7 @@ public class MenuController : MonoBehaviour
                 this.gameObject.SetActive(false);
             }
             if (selectedId == 1) {
-                Application.Quit();
+                GameController.instance.ExitGame();
             }
         }
         SelectOption();

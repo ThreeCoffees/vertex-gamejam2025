@@ -11,7 +11,7 @@ public class DeviceBreaking : MonoBehaviour
 
     public List<DeviceController> devices;
     private ItemType[] itemTypes;
-    private float timeSinceLastBreak = 0.0f;
+    private float timeSinceLastBreak = 1.0f;
 
     private AudioSource audioSource;
 
