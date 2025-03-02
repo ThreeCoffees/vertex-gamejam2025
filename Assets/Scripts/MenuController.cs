@@ -12,12 +12,16 @@ public class MenuController : MonoBehaviour
     [SerializeField] private GameObject player;
 
     [SerializeField] private AudioClip selectSound;
+    [SerializeField] private GameObject tutorialText;
 
     // Start is called before the first frame update
     void Start()
     {
         selected = selections[selectedId];
         player.GetComponent<PlayerMovement>().enabled = false;
+        if(tutorialText != null){
+            tutorialText.GetComponent<TMP_Text>().text = (PlayerPrefs.GetInt("TutorialCompleted") == 1) ? "Tutorial Disabled" : "Tutorial Enabled";
+        }
     }
 
     // Update is called once per frame
@@ -55,6 +59,12 @@ public class MenuController : MonoBehaviour
             }
             if (selectedId == 1) {
                 GameController.instance.ExitGame();
+            }
+            if (selectedId == 2) {
+                PlayerPrefs.SetInt("TutorialCompleted", (PlayerPrefs.GetInt("TutorialCompleted") + 1)%2);
+                if(tutorialText != null){
+                    tutorialText.GetComponent<TMP_Text>().text = (PlayerPrefs.GetInt("TutorialCompleted") == 1) ? "Tutorial Disabled" : "Tutorial Enabled";
+                }
             }
         }
         SelectOption();
